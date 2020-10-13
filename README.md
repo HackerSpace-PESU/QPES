@@ -9,7 +9,7 @@ Dont worry we got you covered. We bring to you the QA bot for PESU
 
 ## Test our Bot
 
-Our bot is still in the development stage but if you want ot test it follow the steps below:
+Our bot is still in the development stage but if you want to test it ,follow the steps below:
 
 1. Clone the repo
 
@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 
 ## Contributing
 
-Check the [Contributing.md](https://github.com/HackerSpace-PESU/QPES/blob/master/CONTRIBUTING.md) file of the repo
+Check the [Contributing.md](https://github.com/HackerSpace-PESU/QPES/blob/master/CONTRIBUTING.md) file of the repo if you would like to contribute to our repo
 
 If you have any suggestions do open a issue and the maintainers will look at it
 
