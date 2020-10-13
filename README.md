@@ -22,6 +22,13 @@ cd QPES/test-questions
 
 4. The results will be put up in the results.txt file in the test-questions folder
 
+### Requirements
+
+Install the dependencies using
+```bash
+pip3 install -r requirements.txt
+```
+
 ## Contributing
 
 Check the [Contributing.md](https://github.com/HackerSpace-PESU/QPES/blob/master/CONTRIBUTING.md) file of the repo
