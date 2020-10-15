@@ -1,28 +1,81 @@
 #! /bin/bash
 
+source ../../allen/bin/activate
 i=0
 while read line
 do
     MODEL[ $i ]="$line"        
     (( i++ ))
-done < <(ls "../model/"*.py)
+done < <(ls "../model/allen/"*.py)
+
 readarray -t QUESTION <questions.txt
 
-echo -n QUESTION, > results.txt
-for modeltype in "${MODEL[@]}"
-    do
-        echo -n $modeltype, >> results.txt 
-    done
-echo >> results.txt
+echo -n MODEL $'\t'>results.tsv
 
 for questiontype in "${QUESTION[@]}"
-do
-    echo -n $questiontype, >> results.txt
-    for modeltype in "${MODEL[@]}"
-    do
-        #echo $questiontype, $modeltype
-        answer=$(python3 $modeltype "$questiontype" "$modeltype")
-        echo -n $answer, >> results.txt 
+	do
+    	echo -n $questiontype $'\t'>> results.tsv
     done
-    echo >> results.txt
+echo >>	results.tsv
+
+for modeltype in "${MODEL[@]}"
+do
+	echo -n $modeltype $'\t'>>results.tsv
+	for questiontype in "${QUESTION[@]}"
+	do
+		#echo $questiontype, $modeltype
+		answer=$(python3 $modeltype "$questiontype")
+		echo -n $answer $'\t'>>results.tsv
+	done
+	echo >>	results.tsv
 done
+deactivate
+
+
+
+source ../../tfenv/bin/activate
+i=0
+while read line
+do
+    T_MODEL[ $i ]="$line"        
+    (( i++ ))
+done < <(ls "../model/transformers/"*.py)
+
+for modeltype in "${T_MODEL[@]}"
+do
+	echo -n	$modeltype $'\t'>>results.tsv
+	for questiontype in "${QUESTION[@]}"
+	do
+		#echo $questiontype, $modeltype
+		answer=$(python3 $modeltype "$questiontype")
+		echo -n	$answer $'\t'>>results.tsv
+	done
+	echo >>	results.tsv
+done
+deactivate
+
+pyenv local oldtf
+
+i=0
+while read line
+do
+    E_MODEL[ $i ]="$line"        
+    (( i++ ))
+done < <(ls "../model/ELMo/"*.py)
+
+for modeltype in "${E_MODEL[@]}"
+do
+	echo -n $modeltype\t>>results.tsv
+	for questiontype in "${QUESTION[@]}"
+	do
+		#echo $questiontype, $modeltype
+		answer=$(python3 $modeltype "$questiontype")
+		echo -n	$answer $'\t'>>results.tsv
+	done
+	echo >>	results.tsv
+done
+pyenv local system
+
+pyenv local system
+
+

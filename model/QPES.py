@@ -2,7 +2,7 @@ import util
 import embedding
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-with open("pescorpus.txt") as infile:
+with open("pes-corpus.txt") as infile:
     corpus = infile.read().strip()
 
 d2vmodel = embedding.trainDoc2VecModel(corpus)
