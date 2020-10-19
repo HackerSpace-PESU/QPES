@@ -54,28 +54,6 @@ do
 done
 deactivate
 
-pyenv local oldtf
 
-i=0
-while read line
-do
-    E_MODEL[ $i ]="$line"        
-    (( i++ ))
-done < <(ls "../model/ELMo/"*.py)
-
-for modeltype in "${E_MODEL[@]}"
-do
-	echo -n $modeltype\t>>results.tsv
-	for questiontype in "${QUESTION[@]}"
-	do
-		#echo $questiontype, $modeltype
-		answer=$(python3 $modeltype "$questiontype")
-		echo -n	$answer $'\t'>>results.tsv
-	done
-	echo >>	results.tsv
-done
-pyenv local system
-
-pyenv local system
 
 

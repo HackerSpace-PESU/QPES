@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser(description="Simple ELMo based QnA model")
 parser.add_argument("question",metavar="question",type=str,nargs=1,help="Enter your question")
 all_args=parser.parse_args()
 question=all_args.question[0]
-with open("../data/pes-corpus.txt") as infile:
+with open("../../data/pes-corpus.txt") as infile:
     context = infile.read().strip()
 elmo_answer=ELMo(context,question)
 print(elmo_answer)
