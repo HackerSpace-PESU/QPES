@@ -1,11 +1,10 @@
-import os
-import sys
-import nltk
-from allennlp.predictors.predictor import Predictor
 import allennlp_models.rc
-
-
-os.system("source ../elmo-allen_nlp/bin/activate")
+from allennlp.predictors.predictor import Predictor
+import nltk
+import sys
+import os
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def elmo_Bidaf(context, question):
@@ -44,17 +43,17 @@ with open("../data/pes-corpus.txt") as datafile:
     context = datafile.read().strip()
 
 models = {'elmo_Bidaf': elmo_Bidaf, 'Bidaf': Bidaf,
-          'transformer_qna': transformer_qna, 'NAQNet': NAQANet}
-
+          'transformer_qna': transformer_qna, 'NAQANet': NAQANet}
 
 question, model_type = sys.argv[1], sys.argv[2]
-model_function = models[model_type]
+try:
+    model_function = models[model_type]
+    print(model_function(context, question))
+except:
+    print(f"ERROR")
 
-#print(model_function(context, question))
-
-with open("questions.txt") as Q:
+"""with open("questions.txt") as Q:
     questions = Q.read().strip().split('\n')
-
 for question_type in questions:
     print(question_type)
     for model_type in models.keys():
@@ -62,6 +61,4 @@ for question_type in questions:
             print(models[model_type](context, question_type))
         except:
             print(f"Error in model: {model_type}")
-    break
-
-os.system("deactivate")
+    break"""

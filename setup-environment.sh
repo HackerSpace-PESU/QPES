@@ -1,6 +1,9 @@
 #!/bin/sh
-sudo rm -r bert-transformer elmo-allen_nlp
+sudo rm -r env
 pip3 install virtualenv
+
+sudo mkdir env
+cd env
 
 virtualenv bert-transformer
 source bert-transformer/bin/activate

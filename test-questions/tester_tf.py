@@ -1,4 +1,3 @@
-import os
 import sys
 import nltk
 import transformers
@@ -6,8 +5,8 @@ from transformers import DistilBertTokenizer, TFDistilBertForQuestionAnswering
 from transformers import AutoTokenizer, TFAutoModelForQuestionAnswering
 import tensorflow as tf
 import numpy
-
-os.system("source ../bert-transformer/bin/activate")
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def BERT(context, question):
@@ -209,13 +208,14 @@ models = {'BERT': BERT, 'Roberta': Roberta, 'camemBert': camemBert, 'distilBERT'
 
 
 question, model_type = sys.argv[1], sys.argv[2]
-model_function = models[model_type]
+try:
+    model_function = models[model_type]
+    print(model_function(context, question))
+except:
+    print(f"ERROR")
 
-#print(model_function(context, question))
-
-with open("questions.txt") as Q:
+"""with open("questions.txt") as Q:
     questions = Q.read().strip().split('\n')
-
 for question_type in questions:
     print(question_type)
     for model_type in models.keys():
@@ -223,6 +223,4 @@ for question_type in questions:
             print(models[model_type](context, question_type))
         except:
             print(f"Error in model: {model_type}")
-    break
-
-os.system("deactivate")
+    break"""
