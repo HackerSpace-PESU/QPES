@@ -1,4 +1,5 @@
 results*
+env/
 .vscode
 __pycache__
 testshell*

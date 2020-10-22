@@ -10,6 +10,6 @@ git clone https://github.com/HackerSpace-PESU/QPES
 ```bash
 cd QPES/
 chmod +x setup-environment.sh
-./setup-environment.sh
+sudo ./setup-environment.sh
 ```
 
