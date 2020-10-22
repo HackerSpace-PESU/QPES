@@ -19,7 +19,6 @@ To contribute to QPES, follow the given guidelines:
     - Location of clubs
     - Summer term info
     - Instructions to get some document from the management, receptions, offices, etc
-    - Instructions to be followed when a person loses ID card
  
  3. Upload a text file with information on the topic you've choosen. In the text file, ensure the following:
     - Each subtopic in your topic must be be placed separately from other subtopics, ensure you don't mix subtopics. Put related information together.

@@ -12,4 +12,8 @@ cd QPES/
 chmod +x setup-environment.sh
 sudo ./setup-environment.sh
 ```
-
+## Testing QPES
+Since QPES is a closed domain QnA System, all information needs to be present in the `pes-corpus.txt` document in the `data/` directory. Additionally, all questions need to be added to `questions.txt` in the `test-questions/` directory. Once these are setup, run
+```bash
+sudo ./test-models.sh
+```

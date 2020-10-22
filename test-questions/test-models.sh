@@ -1,10 +1,11 @@
 #! /bin/bash
 
-readarray -t QUESTION <questions.txt
+rm results*
+
 MODEL_TF=(BERT Roberta camamBert distilBert flauBert funnel bart long_former reformer xlm_roberta)
 MODEL_ALLEN_NLP=(elmo_Bidaf Bidaf transformer_qna NAQANet)
 
-
+readarray -t QUESTION <questions.txt
 echo -n MODEL $'\t'>results.tsv
 for questiontype in "${QUESTION[@]}"
 	do
